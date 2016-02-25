@@ -29,7 +29,7 @@
             android:layout_marginLeft="30dp"
             android:textSize="25sp"
             android:background="@drawable/button_pressed"
-            android:drawableLeft="@drawable/search"
+            android:drawableLeft="@drawable/search2"
             android:text="Search"
             android:textColor="#ffffff"
             android:id="@+id/searchButton"

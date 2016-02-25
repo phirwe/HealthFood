@@ -43,12 +43,11 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                searchText.setHint(searchText.getText().toString());
+                ingredientTable.removeAllViews();
                 try {
                     healthFoods = dataInterface.searchQuery(searchText.getText().toString());
                     int rows = healthFoods.size();
-                    searchText.setHint(searchText.getText().toString());
-                    searchText.setText("");
-                    ingredientTable.removeAllViews();
                     BuildTable(rows);
                 }
                 catch (Exception e) {
@@ -56,6 +55,7 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
                             "No such ingredient in database",
                             Toast.LENGTH_SHORT).show();
                 }
+                searchText.setText("");
             }
         });
 

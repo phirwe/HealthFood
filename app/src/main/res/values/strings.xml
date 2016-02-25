@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Health Food</string>
     <string name="start_draw">Graph View</string>
-    <string name="title_activity_add_ingredient">Add Ingredient</string>
+    <string name="title_activity_add_ingredient">Add New Ingredient</string>
 
     <string-array name="food_types">
         <item name="food_type">Select Food Type</item>
@@ -10,5 +10,10 @@
         <item name="yellow">Yellow</item>
     </string-array>
     <string name="title_activity_select_ingredient">Select Ingredient</string>
+    <string name="title_activity_add_weight">Add Weight</string>
+    <string name="title_activity_profile">Add New Profile</string>
+    <string name="title_activity_view_meals">View Meals</string>
+
+
 
 </resources>

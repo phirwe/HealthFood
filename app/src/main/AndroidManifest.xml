@@ -23,11 +23,13 @@
             android:label="@string/title_activity_add_ingredient" />
         <activity
             android:name=".SelectIngredient"
-            android:label="@string/title_activity_select_ingredient"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddWeight" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".ViewMeals"></activity>
+            android:label="@string/title_activity_select_ingredient" />
+        <activity android:name=".AddWeight"
+            android:label="@string/title_activity_add_weight"/>
+        <activity android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"/>
+        <activity android:name=".ViewMeals"
+            android:label="@string/title_activity_view_meals"/>
     </application>
 
 </manifest>
