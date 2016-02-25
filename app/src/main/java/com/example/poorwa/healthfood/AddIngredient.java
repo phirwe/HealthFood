@@ -1,5 +1,7 @@
 package com.example.poorwa.healthfood;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,20 +42,31 @@ public class AddIngredient extends AppCompatActivity {
         saveIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                healthFood.setIngredient(name.getText().toString());
-                healthFood.setType(type.getSelectedItem().toString());
-                healthFood.setCalorieValue(calorieValue.getText().toString());
 
-                HealthFoodDataInterface dataInterface = new HealthFoodDataInterface(getBaseContext());
-                dataInterface.insert(healthFood);
-                if (dataInterface.z == -1) {
-                    dataInterface.update(healthFood);
+                if (name.getText().toString().isEmpty() || type.getSelectedItemPosition() == 0 ||
+                        calorieValue.getText().toString().isEmpty()) {
+
+                    String displayText = "You have not completed all fields!";
+                    displayAlert(displayText);
+
+
+                } else {
+
+                    healthFood.setIngredient(name.getText().toString());
+                    healthFood.setType(type.getSelectedItem().toString());
+                    healthFood.setCalorieValue(calorieValue.getText().toString());
+
+                    HealthFoodDataInterface dataInterface = new HealthFoodDataInterface(getBaseContext());
+                    dataInterface.insert(healthFood);
+                    if (dataInterface.z == -1) {
+                        dataInterface.update(healthFood);
+                    }
+                    healthFood = dataInterface.getInfo(healthFood.getIngredient());
+                    Log.println(Log.ASSERT, "Ingredient Inserted", healthFood.getIngredient());
+
+                    Toast.makeText(getBaseContext(), "Ingredient Inserted", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
-                healthFood = dataInterface.getInfo(healthFood.getIngredient());
-                Log.println(Log.ASSERT, "Ingredient Inserted", healthFood.getIngredient());
-
-                Toast.makeText(getBaseContext(), "Ingredient Inserted", Toast.LENGTH_SHORT).show();
-                finish();
 
             }
         });
@@ -67,6 +80,18 @@ public class AddIngredient extends AppCompatActivity {
         });
         
 
+    }
+
+    public void displayAlert(String displayText) {
+        new AlertDialog.Builder(this)
+                .setTitle("Diet Advice")
+                .setMessage(displayText)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //finish();
+                    }
+                })
+                .show();
     }
 
 }

@@ -47,7 +47,6 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
                     healthFoods = dataInterface.searchQuery(searchText.getText().toString());
                 }
                 catch (Exception e) {
-                    Toast.makeText(getBaseContext(), "Cannot find ingredient", Toast.LENGTH_SHORT).show();
                 }
 
                 if ((dataInterface.getCount() > 0)) {
@@ -63,7 +62,6 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
                             "No such ingredient in database",
                             Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -127,9 +125,9 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
             tv1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             tv2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             tv3.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tv1.setPadding(0, 12, 0, 0);
-            tv2.setPadding(0, 12, 0, 0);
-            tv3.setPadding(0, 12, 0, 0);
+            tv1.setPadding(0, 13, 0, 0);
+            tv2.setPadding(0, 13, 0, 0);
+            tv3.setPadding(0, 13, 0, 0);
 
             if(k == 0) {
                 tv1.setTextSize(40f);

@@ -1,5 +1,7 @@
 package com.example.poorwa.healthfood;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,17 +38,22 @@ public class ProfileActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                profile = new Profile();
-                float height = Float.valueOf(heightText.getText().toString());
-                float weight = Float.valueOf(weightText.getText().toString());
-                profile.setName(nameText.getText().toString());
-                profile.setWeight(weightText.getText().toString());
-                profile.setHeight(heightText.getText().toString());
-                profile.setGender(gender);
-                ProfileDataInterface dataInterface = new ProfileDataInterface(getBaseContext());
-                dataInterface.insert(profile);
-                Toast.makeText(getBaseContext(), "User Successfully Added", Toast.LENGTH_LONG).show();
-                finish();
+
+                if(nameText.getText().toString().isEmpty() || heightText.getText().toString().isEmpty() ||
+                        weightText.getText().toString().isEmpty() || genderGroup.getCheckedRadioButtonId() == -1) {
+                    String displayText = "You have not completed all fields!";
+                    displayAlert(displayText);
+                } else {
+                    profile = new Profile();
+                    profile.setName(nameText.getText().toString());
+                    profile.setWeight(weightText.getText().toString());
+                    profile.setHeight(heightText.getText().toString());
+                    profile.setGender(gender);
+                    ProfileDataInterface dataInterface = new ProfileDataInterface(getBaseContext());
+                    dataInterface.insert(profile);
+                    Toast.makeText(getBaseContext(), "User Successfully Added", Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
         });
     }
@@ -71,5 +78,18 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void displayAlert(String displayText) {
+        new AlertDialog.Builder(this)
+                .setTitle("Diet Advice")
+                .setMessage(displayText)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //finish();
+                    }
+                })
+                .show();
+    }
+
 
 }
