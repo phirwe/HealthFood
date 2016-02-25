@@ -45,19 +45,13 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
                 // TODO Auto-generated method stub
                 try {
                     healthFoods = dataInterface.searchQuery(searchText.getText().toString());
-                }
-                catch (Exception e) {
-                }
-
-                if ((dataInterface.getCount() > 0)) {
                     int rows = healthFoods.size();
                     searchText.setHint(searchText.getText().toString());
                     searchText.setText("");
                     ingredientTable.removeAllViews();
                     BuildTable(rows);
                 }
-
-                else {
+                catch (Exception e) {
                     Toast.makeText(getBaseContext(),
                             "No such ingredient in database",
                             Toast.LENGTH_SHORT).show();
