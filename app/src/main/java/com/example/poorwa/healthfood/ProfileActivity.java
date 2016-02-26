@@ -81,7 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void displayAlert(String displayText) {
         new AlertDialog.Builder(this)
-                .setTitle("Diet Advice")
+                .setTitle("User Info")
                 .setMessage(displayText)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

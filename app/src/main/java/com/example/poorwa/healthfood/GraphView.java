@@ -219,7 +219,7 @@ public class GraphView extends AppCompatActivity {
             //get center
             //int width = display.getWidth();
             //int height = display.getHeight();
-            float centroidx = width / 2;
+            float centroidx = width * 2 / 5;
             float centroidy = height * 5 / 9;
 
             paint.setColor(Color.BLACK);

@@ -8,6 +8,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -20,7 +21,8 @@ public class ViewMeals extends AppCompatActivity {
     MealDataInterface mealDataInterface;
     TableLayout mealTable;
     String[] ingredientName, calories, type;
-    TextView dateView;
+    TextView dateView, calorieView;
+    float totalCalories = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class ViewMeals extends AppCompatActivity {
 
         dateView = (TextView) findViewById(R.id.dateView);
         mealTable = (TableLayout) findViewById(R.id.mealTable);
+        calorieView = (TextView) findViewById(R.id.calorieView);
 
         mealDataInterface = new MealDataInterface(this);
         SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
@@ -53,6 +56,7 @@ public class ViewMeals extends AppCompatActivity {
             if (i > 0) {
                 ingredientName[i] = mealList.get(i - 1).getIngredient();
                 calories[i] = mealList.get(i - 1).getCalories();
+                totalCalories += Float.valueOf(calories[i]);
                 type[i] = mealList.get(i - 1).getType();
             } else {
                 ingredientName[i] = "Ingredient Name";
@@ -126,5 +130,8 @@ public class ViewMeals extends AppCompatActivity {
                     TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
         }
+        DecimalFormat df = new DecimalFormat("0.00");
+        totalCalories = Float.parseFloat(df.format(totalCalories));
+        calorieView.setText(String.valueOf(totalCalories) + " cal");
     }
 }

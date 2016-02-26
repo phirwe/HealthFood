@@ -84,7 +84,7 @@ public class AddIngredient extends AppCompatActivity {
 
     public void displayAlert(String displayText) {
         new AlertDialog.Builder(this)
-                .setTitle("Diet Advice")
+                .setTitle("New Ingredient")
                 .setMessage(displayText)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

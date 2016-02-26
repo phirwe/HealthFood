@@ -36,7 +36,6 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
         searchButton = (Button) findViewById(R.id.searchButton);
         searchText = (EditText) findViewById(R.id.searchText);
 
-        dataInterface = new HealthFoodDataInterface(this);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
 
@@ -44,6 +43,7 @@ public class SelectIngredient extends AppCompatActivity implements View.OnClickL
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 searchText.setHint(searchText.getText().toString());
+                dataInterface = new HealthFoodDataInterface(getBaseContext());
                 ingredientTable.removeAllViews();
                 try {
                     healthFoods = dataInterface.searchQuery(searchText.getText().toString());
